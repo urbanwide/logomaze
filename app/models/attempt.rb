@@ -22,6 +22,7 @@ class Attempt < ActiveRecord::Base
     else
       self.completed_at = nil
     end
+    save
   end
 
   protected
