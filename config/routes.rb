@@ -1,5 +1,7 @@
 Maze::Application.routes.draw do
   
+  root :to => 'pages#index'
+  
   resources :events do
     resources :attempts do
       get 'program'
