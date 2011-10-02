@@ -1,10 +1,23 @@
-<h1><%= @attempt.name %></h1>
 
+<h1><%=h @attempt.name %></h1>
+<div class="alert-message success">
+	<em>Congratulations</em>, you've submitted your program !
+</div>
+
+<% unless @attempt.event.instructions.blank? %>
+<h2>What do I do next ?</h2>
 <p><%=h @attempt.event.instructions %></p>
+<% end %>
 
-<p>Your token: <%= @attempt.token %></p>
-<br/>
 <p>Your Program (<%= link_to 'edit', edit_event_attempt_path(@event, @attempt) %>):</p>
-<pre>
+<pre class="prettyprint">
 <%=h @attempt.program %>
 </pre>
+
+<h2>Details</h2>
+<table>
+	<tr><td>Name</td><td><%=h @attempt.name %></td></tr>
+	<tr><td>Token</td><td><%= @attempt.token %></td></tr>
+</table>
+
+

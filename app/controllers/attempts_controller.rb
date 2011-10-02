@@ -9,12 +9,12 @@ class AttemptsController < ApplicationController
   end
 
   def create
-   @attempt = @event.attempts.create(params[:attempt])
+   @attempt = @event.attempts.build(params[:attempt])
     respond_to do |format|
-      if !@attempt.nil?
+      if @attempt.save
         format.html { redirect_to event_attempt_path(@event, @attempt) }
       else
-        format.html { render :action => "new" }
+        format.html { render :template => "attempts/new", :layout => 'attempt' }
       end
     end    
   end
@@ -34,7 +34,11 @@ class AttemptsController < ApplicationController
   end
 
   def update
-   @attempt = @event.attempts.find(params[:id])
+    @attempt = @event.attempts.find(params[:id])
+    protected_fields = [:completed]
+    unless params[:attempt].key?(:key) and @attempt.event.key == params[:attempt].delete(:key)
+       protected_fields.each { |field| params[:attempt].delete(field) }
+    end
     respond_to do |format|
       if @attempt.update_attributes(params[:attempt])
         format.html { redirect_to event_attempt_path(@event, @attempt) }

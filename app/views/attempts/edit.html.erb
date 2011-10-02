@@ -1,5 +1,6 @@
+			<%= render "shared/error_messages", :target => @attempt %> 
 	     	<%= form_for [@event, @attempt], :html => { :id => 'data'} do |f| %>
-			  <%= f.label :name, 'Name' %>:
+			  <%= f.label :name, 'Your Name' %>:
 			  <%= f.text_field :name %><br />
-			  <%= f.submit %>
+			  <%= f.submit 'Submit', :class => 'btn primary' %>
 			<% end %>

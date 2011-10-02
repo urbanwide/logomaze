@@ -6,7 +6,8 @@ only ever email you in an emergency.</p>
 
 <p>Don't worry if you aren't sure about some fields, you can come back and edit them later.</p>
 
+<%= render "shared/error_messages", :target => @event %> 
 <%= form_for @event do |f| %>
   <%= render :partial => 'events/form', :locals => { :event => @event } %>
-  <%= f.submit %>
+  <%= f.submit 'Add Event', :class => 'btn primary' %>
 <% end %>

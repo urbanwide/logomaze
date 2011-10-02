@@ -30,12 +30,14 @@ class EventsController < ApplicationController
   end
 
   def update
-   @event = Event.find(params[:id], :conditions => { :key => params[:event].delete(:key) })
+    @event = Event.find_by_token(params[:id], :conditions => { :key => params[:event].delete(:key) })
     respond_to do |format|
-      if @event.update_attributes(params[:event])
+      if !@event.nil? && @event.update_attributes(params[:event])
         flash[:notice] = 'Your details were successfully updated.'
         format.html { redirect_to event_path(@event) }
       else
+        flash[:error] = 'Please specify your key'
+        @event = Event.find(params[:id])
         format.html { render :action => "edit" }
       end
     end    

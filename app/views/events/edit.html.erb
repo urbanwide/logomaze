@@ -1,8 +1,11 @@
 <h1>Update <%= @event.name %></h1>
 
+<%= render :partial => '/shared/flash', :locals => {:flash => flash} %>
+
+<%= render "shared/error_messages", :target => @event %> 
 <%= form_for @event, :method => :put do |f| %>
   <%= render :partial => 'events/form', :locals => { :event => @event } %>
   <%= f.label :key, 'Event key' %>:
   <%= f.text_field :key, :value => '' %><br />  
-  <%= f.submit %>
+  <%= f.submit :class => 'btn primary' %>
 <% end %>

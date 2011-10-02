@@ -1,0 +1,11 @@
+
+<% map = { :notice => 'success', :warning => 'warning', :error => 'error' }%>
+<% map.keys.each do |type| %>
+<% unless flash[type].blank? %>
+<div class="alert-message <%= map[type] %>" data-alert="alert">
+	<a class="close">x</a>
+	<%= flash[type] %>
+	</div>
+</div>
+<% end %>
+<% end %>
