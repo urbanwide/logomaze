@@ -1,4 +1,8 @@
 class Attempt < ActiveRecord::Base
+  
+  include Retryable
+  class TokenExists < StandardError; end
+  
   set_primary_key 'token'
   
   attr_accessible :name, :program
@@ -14,7 +18,10 @@ class Attempt < ActiveRecord::Base
 
   protected
   def set_token
-    # TODO: Ensure unique
-    self.token = rand(36**5).to_s(36) if self.new_record? and self.token.blank?
+    retryable(:tries => 10, :on => TokenExists) do
+      t = rand(36**5).to_s(36) 
+      self.token = t if self.new_record? and self.token.blank? 
+      raise Attempt::TokenExists if Attempt.find_by_token(t)
+    end
   end 
 end

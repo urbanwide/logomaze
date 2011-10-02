@@ -1,4 +1,9 @@
 class Event < ActiveRecord::Base
+  
+  include Retryable
+  class TokenExists < StandardError; end
+  class KeyExists < StandardError; end
+  
   set_primary_key 'token'
 
   attr_accessible :name, :email, :instructions
@@ -18,12 +23,18 @@ class Event < ActiveRecord::Base
 
   protected
   def set_token
-    # TODO: ensure unique
-    self.token = rand(36**5).to_s(36) if self.new_record? and self.token.blank?
+    retryable(:tries => 10, :on => TokenExists) do
+      t = rand(36**5).to_s(36) 
+      self.token = t if self.new_record? and self.token.blank? 
+      raise Event::TokenExists if Event.find_by_token(t)
+    end
   end
   def set_key
-    # TODO: Ensure unique
-    self.key = rand(36**5).to_s(36) if self.new_record? and self.key.blank?
+    retryable(:tries => 10, :on => KeyExists) do
+      k = rand(36**5).to_s(36) 
+      self.key = k if self.new_record? and self.key.blank? 
+      raise Event::KeyExists if Event.find_by_key(k)
+    end
   end
   
 end
