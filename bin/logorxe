@@ -1,0 +1,107 @@
+#!/usr/bin/env ruby -w
+
+require 'rubygems'
+require 'erb'
+require 'trollop'
+require 'logonxc'
+
+root_dir = File.expand_path(File.dirname(__FILE__) + "/../")
+
+tmp_dir_default = "#{root_dir}/tmp"
+out_dir_default = ENV['LOGORXE_OUT_DIR'] || "."
+
+p = Trollop::Parser.new do
+  banner "Usage: logorxe attempt [options]"
+  opt :event,     "event token",              :default => ENV['LOGORXE_EVENT'],         :short => "-e", :type => String
+  opt :base_url,  "url of logomaze",          :default => "http://logomaze.heroku.com", :short => "-u", :type => String
+  opt :tmp_dir,   "output dir for nxc files", :default => tmp_dir_default,              :short => "-t", :type => String
+  opt :out_dir,   "output dir for rxe files", :default => out_dir_default,              :short => "-o", :type => String
+  opt :name,      "override default name",                                              :short => "-n", :type => String
+  opt :key,       "security key for event",   :default => ENV['LOGORXE_KEY'],           :short => "-k", :type => String
+  opt :verbose,   "MAKE NOISE",               :default => true,                         :short => "-v"
+end
+
+opts = Trollop::with_standard_exception_handling p do
+  o = p.parse ARGV
+  raise Trollop::HelpNeeded if ARGV.empty? # show help screen
+  o
+end
+
+[:key, :event].each do |o|
+  if opts[o].nil? || opts[o] == ""
+    puts "option #{o} is required"
+    exit(1)
+  end
+end
+
+opts[:attempt] = ARGV.shift
+
+nxc_file = "#{opts[:tmp_dir]}/#{opts[:event]}-#{opts[:attempt]}.nxc"
+rxe_name = opts[:output] || "#{opts[:event]}-#{opts[:attempt]}.rxe"
+rxe_file = "#{opts[:out_dir]}/#{rxe_name}"
+nbc_command = "/usr/local/bin/nbc -O=#{rxe_file} #{nxc_file}"
+
+class Attempt
+
+  require 'net/http'
+
+  attr_accessor :base_url, :event, :attempt
+  attr_reader :logo
+
+  def initialize(options = {})
+    [:base_url, :event, :attempt].each do |opt|
+      options[opt] || raise(ArgumentError, "You must pass #{opt}")
+      s = "#{opt}="
+      send(s, options[opt])
+    end
+
+    @resource = "/events/#{event}/attempts/#{attempt}"
+    @http = Net::HTTP.new(URI.parse(base_url).host)
+
+    @logo = fetch
+  end
+
+  def fetch
+    program = "#{@resource}/program"
+    request = Net::HTTP::Get.new(program)
+    response = @http.request(request)
+    raise "Could not get attempt from #{program}: response code: #{response.code}" unless response.code == "200"
+
+    response.body
+  end
+
+  def complete!(key)
+    request = Net::HTTP::Put.new(@resource)
+    request.set_form_data({"attempt[completed]" => "1", "attempt[key]" => key})
+    response = @http.request(request)
+
+    raise "Could not put attempt to #{@resource}: response code: #{response.code}" unless response.code == "302"
+    true
+  end
+
+end
+
+att = Attempt.new :event => opts[:event], :attempt => opts[:attempt], :base_url => opts[:base_url]
+nxc = LogoNxc.nxc(att.logo)
+
+puts "Logo:\n#{att.logo}" if opts[:verbose]
+puts "NXC: \n#{nxc}" if opts[:verbose]
+
+puts "Writing out nxc file to: #{nxc_file}" if opts[:verbose]
+File.open(nxc_file, 'w') {|f| f.write(nxc) }
+
+puts "Running: #{nbc_command}" if opts[:verbose]
+out =  %x[#{nbc_command}]
+puts out if opts[:verbose]
+
+puts "rxe file can now be found at: #{rxe_file}"
+
+puts "Did the user with attempt token #{opts[:attempt]} make it through the maze?"
+pass = gets.chomp
+
+if pass =~/^(yes|y|true|1)$/
+  att.complete!(opts[:key])
+  puts "Great! Updating the server to say that #{opts[:attempt]} made it through the maze"
+else
+  puts "#{opts[:attempt]} did not make it through the maze this time"
+end
