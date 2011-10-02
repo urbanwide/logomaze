@@ -1,0 +1,5 @@
+	     	<%= form_for [@event, @attempt], :html => { :id => 'data'} do |f| %>
+			  <%= f.label :name, 'Name' %>:
+			  <%= f.text_field :name %><br />
+			  <%= f.submit %>
+			<% end %>

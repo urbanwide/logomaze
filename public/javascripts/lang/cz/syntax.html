@@ -1,0 +1,219 @@
+<table class="syntaxTable">
+  <caption>Pohyb želvy a práce s plátnem</caption>
+  <thead>
+    <tr>  
+        <th>Příkaz</th>
+        <th>Alternativa</th>
+        <th>Popis příkazu</th>
+        <th>Příklad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <th class="cmd">forward <i>&lt;x&gt;</i></th>
+        <th class="cmd1">fd <i>&lt;x&gt;</i></th>
+        <td class="desc">Přesunutí želvy o <i>x</i> bodů vpřed.</td>
+        <td class="exam">forward 10</td>
+    </tr>
+    <tr>
+        <th class="cmd">back <i>&lt;x&gt;</i></th>
+        <th class="cmd1">bk <i>&lt;x&gt;</i></th>
+        <td class="desc">Přesunutí želvy o <i>x</i> bodů zpět.</td>
+        <td class="exam">back 10</td>
+    </tr>
+    <tr>
+        <th class="cmd">left <i>&lt;a&gt;</i></th>
+        <th class="cmd1">lt <i>&lt;a&gt;</i></th>
+        <td class="desc">Natočení želvy o <i>a</i> stupňů vlevo.</td>
+        <td class="exam">left 90</td>
+    </tr>
+    <tr>
+        <th class="cmd">right <i>&lt;a&gt;</i></th>
+        <th class="cmd1">rt <i>&lt;a&gt;</i></th>
+        <td class="desc">Natočení želvy o <i>a</i> stupňů vpravo.</td>
+        <td class="exam">right 90</td>
+    </tr>
+    <tr>
+        <th class="cmd">penup</th>
+        <th class="cmd1">pu</th>
+        <td class="desc">Nadzvednutí želvy. Želva přestane kreslit čáru.</td>
+        <td class="exam">penup</td>
+    </tr>
+    <tr>
+        <th class="cmd">pendown</th>
+        <th class="cmd1">pd</th>
+        <td class="desc">Položení želvy. Želva začne kreslit čáru.</td>
+        <td class="exam">pendown</td>
+    </tr>
+    <tr>
+        <th class="cmd">showturtle</th>
+        <th class="cmd1">st</th>
+        <td class="desc">Zobrazení želvy. Želva bude viditelná.</td>
+        <td class="exam">showturtle</td>
+    </tr>
+    <tr>
+        <th class="cmd">hideturtle</th>
+        <th class="cmd1">ht</th>
+        <td class="desc">Skrytí želvy. Želva bude neviditelná.</td>
+        <td class="exam">hideturtle</td>
+    </tr>
+    <tr>
+        <th class="cmd">home</th>
+        <th class="cmd1">&nbsp;</th>
+        <td class="desc">Želva se postaví doprostřed plátna (do své výchozí pozice).</td>
+        <td class="exam">home</td>
+    </tr>   
+    <tr>
+        <th class="cmd">clean</th>
+        <th class="cmd1">&nbsp;</th>
+        <td class="desc">Smaže celé plátno.</td>
+        <td class="exam">clean</td>
+    </tr>
+    <tr>
+        <th class="cmd">clearscreen</th>
+        <th class="cmd1">cs</th>
+        <td class="desc">Provede příkaz home a clean.</td>
+        <td class="exam">clearscreen</td>
+    </tr>
+  </tbody>
+</table>
+<br><br><br>
+
+<table class="syntaxTable">
+  <caption>Matematické operace a funkce</caption>
+  <thead>
+    <tr>
+        <th>Výraz</th>
+        <th>Popis výrazu</th>
+        <th>Příklad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <th class="cmd">( <i>&lt;x&gt;</i> )</th>
+        <td class="desc">Závorky. Je doporučeno precizně uzávorkovávát všechny matematické výrazy.</td>
+        <td class="exam">(10 + ((sin 5) ^ 3))</td>
+    </tr>
+    <tr>
+        <th class="cmd"><i>&lt;x&gt;</i> + <i>&lt;y&gt;</i></th>        
+        <td class="desc">Součet čísel <i>x</i> a <i>y</i>. </td>
+        <td class="exam">10 + 5</td>
+    </tr>
+    <tr>
+        <th class="cmd"><i>&lt;x&gt;</i> - <i>&lt;y&gt;</i></th>        
+        <td class="desc">Rozdíl čísel <i>x</i> a <i>y</i>. </td>
+        <td class="exam">10 - 5</td>
+    </tr>
+    <tr>
+        <th class="cmd"><i>&lt;x&gt;</i> * <i>&lt;y&gt;</i></th>        
+        <td class="desc">Součin čísel <i>x</i> a <i>y</i>.</td>
+        <td class="exam">10 * 5</td>
+    </tr>
+    <tr>
+        <th class="cmd"><i>&lt;x&gt;</i> / <i>&lt;y&gt;</i></th>        
+        <td class="desc">Podíl čísel <i>x</i> a <i>y</i>.</td>
+        <td class="exam">10 / 5</td>
+    </tr>
+    <tr>
+        <th class="cmd"><i>&lt;x&gt;</i> ^ <i>&lt;y&gt;</i></th>        
+        <td class="desc">Mocnina, <i>x<sup>y</sup></i>.</td>
+        <td class="exam">10 ^ 2</td>
+    </tr>
+    <tr>
+        <th class="cmd">sqrt <i>&lt;x&gt;</i></th>        
+        <td class="desc">Druhá odmocnina z čísla <i>x</i>. </td>
+        <td class="exam">sqrt 100</td>
+    </tr>
+    <tr>
+        <th class="cmd">sin <i>&lt;x&gt;</i></th>
+        <td class="desc">Goniometrická funkce sinus. Číslo <i>x</i> je úhel ve stupních.</td>
+        <td class="exam">sin 45</td>
+    </tr>
+    <tr>
+        <th class="cmd">cos <i>&lt;x&gt;</i></th>
+        <td class="desc">Goniometrická funkce cosinus. Číslo <i>x</i> je úhel ve stupních.</td>
+        <td class="exam">cos 45</td>
+    </tr>
+    <tr>
+        <th class="cmd">tan <i>&lt;x&gt;</i></th>
+        <td class="desc">Goniometrická funkce tangens. Číslo <i>x</i> je úhel ve stupních.</td>
+        <td class="exam">tan 45</td>
+    </tr>
+    <tr>
+        <th class="cmd">arcsin <i>&lt;x&gt;</i></th>
+        <td class="desc">Cyklometrická funkce arkus sinus. <i>x</i> je číslo a výsledek je vrácen ve stupních.</td>
+        <td class="exam">arcsin 1</td>
+    </tr>
+    <tr>
+        <th class="cmd">arccos <i>&lt;x&gt;</i></th>
+        <td class="desc">Cyklometrická funkce arkus cosinus. <i>x</i> je číslo a výsledek je vrácen ve stupních.</td>
+        <td class="exam">arccos 1</td>
+    </tr>
+    <tr>
+        <th class="cmd">arctan <i>&lt;x&gt;</i></th>
+        <td class="desc">Cyklometrická funkce arkus tangens. <i>x</i> je číslo a výsledek je vrácen ve stupních.</td>
+        <td class="exam">arctan 1</td>
+    </tr>
+  </tbody>
+</table>
+<br><br><br>
+
+<table class="syntaxTable">
+  <caption>Řídící struktury</caption>
+  <thead>
+    <tr>
+        <th>Příkaz</th>
+        <th>Popis výrazu</th>
+        <th>Příklad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <th class="cmd">repeat <i>&lt;K&gt;</i> [ <i>&lt;příkazy&gt;</i> ]</th>
+        <td class="desc">Želva zopakuje blok příkazů <i>&lt;K&gt;</i>-krát.</td>
+        <td class="exam"><pre>
+repeat 4 [
+  left 90
+  fd 50
+]</pre></td>
+    </tr>
+
+    <tr>
+        <th class="cmd">if <i>&lt;C&gt;</i> [ <i>&lt;příkazy&gt;</i> ]</th>
+        <td class="desc">Jednoduché  větvení. Pokud želva vyhodnotí výraz <i>&lt;C&gt;</i> jako pravdivý, pak provede následující blok příkazů.</td>
+        <td class="exam"><pre>
+if 1 &lt; 4 [
+  left 90
+  fd 50
+]</pre></td>
+    </tr>
+
+
+    <tr>
+        <th class="cmd">ifelse <i>&lt;C&gt;</i> [ <i>&lt;příkazy1&gt;</i> ] [ <i>&lt;příkazy2&gt;</i> ]</th>
+        <td class="desc">Větvení s else. Pokud želva vyhodnotí výraz <i>&lt;C&gt;</i> jako pravdivý, pak provede  blok příkazů1, v opačném případě blok příkazů2.</td>
+        <td class="exam"><pre>
+if 1 &gt; 4 [
+  left 90
+  fd 50
+] [
+  right 90
+  fd 50
+]</pre></td>
+    </tr>
+
+
+        <tr>
+        <th class="cmd">to <i>&lt;nazev&gt;</i> <i>&lt;parametry&gt;</i> <i>&lt;příkazy&gt;</i> end</th>
+        <td class="desc">Definice funkce <i>nazev</i>. Parametry funkce jsou proměnné začínající dvojtečkou a jsou odděleny mezerou. Následuje tělo funkce.</td>
+        <td class="exam"><pre>
+to triangle :side
+  repeat 3 [
+   right 120
+   fd :side
+  ]
+end</pre></td>
+    </tr>
+
+  </tbody>
+</table>

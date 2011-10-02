@@ -1,0 +1,8 @@
+<%= fields_for :event, event do |fields| %>
+  <%= fields.label :name, 'Event Name' %>:
+  <%= fields.text_field :name %><br />
+  <%= fields.label :email, 'Your Email' %>:
+  <%= fields.text_field :email %><br />
+  <%= fields.label :instructions, 'Event Instructions' %>:
+  <%= fields.text_area :instructions %><br />
+<% end %>

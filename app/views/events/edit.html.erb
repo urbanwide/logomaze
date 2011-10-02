@@ -1,0 +1,8 @@
+<h1>Update <%= @event.name %></h1>
+
+<%= form_for @event, :method => :put do |f| %>
+  <%= render :partial => 'events/form', :locals => { :event => @event } %>
+  <%= f.label :key, 'Event key' %>:
+  <%= f.text_field :key, :value => '' %><br />  
+  <%= f.submit %>
+<% end %>

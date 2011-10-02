@@ -1,0 +1,219 @@
+<table class="syntaxTable">
+  <caption>Movement of turtle and working with canvas</caption>
+  <thead>
+    <tr>  
+        <th>Command</th>
+        <th>Alternative</th>
+        <th>Description of command</th>
+        <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <th class="cmd">forward <i>&lt;x&gt;</i></th>
+        <th class="cmd1">fd <i>&lt;x&gt;</i></th>
+        <td class="desc">Move the turtle forward on <i>x</i> points.</td>
+        <td class="exam">forward 10</td>
+    </tr>
+    <tr>
+        <th class="cmd">back <i>&lt;x&gt;</i></th>
+        <th class="cmd1">bk <i>&lt;x&gt;</i></th>
+        <td class="desc">Move the turtle back on <i>x</i> points.</td>
+        <td class="exam">back 10</td>
+    </tr>
+    <tr>
+        <th class="cmd">left <i>&lt;a&gt;</i></th>
+        <th class="cmd1">lt <i>&lt;a&gt;</i></th>
+        <td class="desc">turtle rotation by <i>a</i> degrees to the left.</td>
+        <td class="exam">left 90</td>
+    </tr>
+    <tr>
+        <th class="cmd">right <i>&lt;a&gt;</i></th>
+        <th class="cmd1">rt <i>&lt;a&gt;</i></th>
+        <td class="desc">turtle rotation by <i>a</i> degrees to the right.</td>
+        <td class="exam">right 90</td>
+    </tr>
+    <tr>
+        <th class="cmd">penup</th>
+        <th class="cmd1">pu</th>
+        <td class="desc">Lifting turtle. Turtle stops drawing the line.</td>
+        <td class="exam">penup</td>
+    </tr>
+    <tr>
+        <th class="cmd">pendown</th>
+        <th class="cmd1">pd</th>
+        <td class="desc">Laying turtle. The turtle will draw a line.</td>
+        <td class="exam">pendown</td>
+    </tr>
+    <tr>
+        <th class="cmd">showturtle</th>
+        <th class="cmd1">st</th>
+        <td class="desc">Viewing turtle. Turtle will be visible.</td>
+        <td class="exam">showturtle</td>
+    </tr>
+    <tr>
+        <th class="cmd">hideturtle</th>
+        <th class="cmd1">ht</th>
+        <td class="desc">Hiding turtle. Turtle will be invisible.</td>
+        <td class="exam">hideturtle</td>
+    </tr>
+    <tr>
+        <th class="cmd">home</th>
+        <th class="cmd1">&nbsp;</th>
+        <td class="desc">Turtle will stand to the middle of the screen (in its default position).</td>
+        <td class="exam">home</td>
+    </tr>   
+    <tr>
+        <th class="cmd">clean</th>
+        <th class="cmd1">&nbsp;</th>
+        <td class="desc">Erases the entire canvas.</td>
+        <td class="exam">clean</td>
+    </tr>
+    <tr>
+        <th class="cmd">clearscreen</th>
+        <th class="cmd1">cs</th>
+        <td class="desc">Performs command home and clean.</td>
+        <td class="exam">clearscreen</td>
+    </tr>
+  </tbody>
+</table>
+<br><br><br>
+
+<table class="syntaxTable">
+  <caption>Mathematical operations and functions</caption>
+  <thead>
+    <tr>
+        <th>Expression</th>
+        <th>Description of expression</th>
+        <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <th class="cmd">( <i>&lt;x&gt;</i> )</th>
+        <td class="desc">Brackets. It is recommended to add all the missing brackets in mathematical expressions.</td>
+        <td class="exam">(10 + ((sin 5) ^ 3))</td>
+    </tr>
+    <tr>
+        <th class="cmd"><i>&lt;x&gt;</i> + <i>&lt;y&gt;</i></th>        
+        <td class="desc">Total numbers <i>x</i> a <i>y</i>. </td>
+        <td class="exam">10 + 5</td>
+    </tr>
+    <tr>
+        <th class="cmd"><i>&lt;x&gt;</i> - <i>&lt;y&gt;</i></th>        
+        <td class="desc">Difference of numbers <i>x</i> a <i>y</i>. </td>
+        <td class="exam">10 - 5</td>
+    </tr>
+    <tr>
+        <th class="cmd"><i>&lt;x&gt;</i> * <i>&lt;y&gt;</i></th>        
+        <td class="desc">The product numbers <i>x</i> a <i>y</i>.</td>
+        <td class="exam">10 * 5</td>
+    </tr>
+    <tr>
+        <th class="cmd"><i>&lt;x&gt;</i> / <i>&lt;y&gt;</i></th>        
+        <td class="desc">Share numbers <i>x</i> a <i>y</i>.</td>
+        <td class="exam">10 / 5</td>
+    </tr>
+    <tr>
+        <th class="cmd"><i>&lt;x&gt;</i> ^ <i>&lt;y&gt;</i></th>        
+        <td class="desc">Power, <i>x<sup>y</sup></i>.</td>
+        <td class="exam">10 ^ 2</td>
+    </tr>
+    <tr>
+        <th class="cmd">sqrt <i>&lt;x&gt;</i></th>        
+        <td class="desc">Square root of number <i>x</i>. </td>
+        <td class="exam">sqrt 100</td>
+    </tr>
+    <tr>
+        <th class="cmd">sin <i>&lt;x&gt;</i></th>
+        <td class="desc">Trigonometric sine function. Number <i>x</i> is the angle in degrees.</td>
+        <td class="exam">sin 45</td>
+    </tr>
+    <tr>
+        <th class="cmd">cos <i>&lt;x&gt;</i></th>
+        <td class="desc">Trigonometric functions cosine. Number <i>x</i> is the angle in degrees.</td>
+        <td class="exam">cos 45</td>
+    </tr>
+    <tr>
+        <th class="cmd">tan <i>&lt;x&gt;</i></th>
+        <td class="desc">Trigonometric functions tangent. Number <i>x</i> is the angle in degrees.</td>
+        <td class="exam">tan 45</td>
+    </tr>
+    <tr>
+        <th class="cmd">arcsin <i>&lt;x&gt;</i></th>
+        <td class="desc">Inverse trigonometric function sine. <i>x</i> is the number and the result is returned in degrees.</td>
+        <td class="exam">arcsin 1</td>
+    </tr>
+    <tr>
+        <th class="cmd">arccos <i>&lt;x&gt;</i></th>
+        <td class="desc">Inverse trigonometric function cosine. <i>x</i> is the number and the result is returned in degrees.</td>
+        <td class="exam">arccos 1</td>
+    </tr>
+    <tr>
+        <th class="cmd">arctan <i>&lt;x&gt;</i></th>
+        <td class="desc">Inverse trigonometric function tangent. <i>x</i> is the number and the result is returned in degrees.</td>
+        <td class="exam">arctan 1</td>
+    </tr>
+  </tbody>
+</table>
+<br><br><br>
+
+<table class="syntaxTable">
+  <caption>Control structures</caption>
+  <thead>
+    <tr>
+        <th>Command</th>
+        <th>Description of expression</th>
+        <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <th class="cmd">repeat <i>&lt;K&gt;</i> [ <i>&lt;commands&gt;</i> ]</th>
+        <td class="desc">Turtle repeated block to the <i>&lt;K&gt;</i>-times.</td>
+        <td class="exam"><pre>
+repeat 4 [
+  left 90
+  fd 50
+]</pre></td>
+    </tr>
+
+    <tr>
+        <th class="cmd">if <i>&lt;C&gt;</i> [ <i>&lt;commands&gt;</i> ]</th>
+        <td class="desc">Simple branching. If the turtle evaluate <i>&lt;C&gt;</i> be true, then executes the next block of commands.</td>
+        <td class="exam"><pre>
+if 1 &lt; 4 [
+  left 90
+  fd 50
+]</pre></td>
+    </tr>
+
+
+    <tr>
+        <th class="cmd">ifelse <i>&lt;C&gt;</i> [ <i>&lt;commands1&gt;</i> ] [ <i>&lt;commands2&gt;</i> ]</th>
+        <td class="desc">Branching with else. If the turtle evaluate <i>&lt;C&gt;</i> be true, then makes a block of commands1, otherwise the block of commands2.</td>
+        <td class="exam"><pre>
+if 1 &gt; 4 [
+  left 90
+  fd 50
+] [
+  right 90
+  fd 50
+]</pre></td>
+    </tr>
+
+
+        <tr>
+        <th class="cmd">to <i>&lt;name&gt;</i> <i>&lt;parameters&gt;</i> <i>&lt;commands&gt;</i> end</th>
+        <td class="desc">Function definition <i>name</i>. The parameters of function are variables beginning with a colon and are separated by a space. The function body follows.</td>
+        <td class="exam"><pre>
+to triangle :side
+  repeat 3 [
+   right 120
+   fd :side
+  ]
+end</pre></td>
+    </tr>
+
+  </tbody>
+</table>

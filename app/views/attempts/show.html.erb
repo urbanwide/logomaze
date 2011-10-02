@@ -1,0 +1,10 @@
+<h1><%= @attempt.name %></h1>
+
+<p><%=h @attempt.event.instructions %></p>
+
+<p>Your token: <%= @attempt.token %></p>
+<br/>
+<p>Your Program (<%= link_to 'edit', edit_event_attempt_path(@event, @attempt) %>):</p>
+<pre>
+<%=h @attempt.program %>
+</pre>

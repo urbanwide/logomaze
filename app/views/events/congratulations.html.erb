@@ -1,0 +1,20 @@
+<h1><%= @event.name %></h1>
+
+<p>Congratulations, your event has been created.  We <strong>strongly</strong> suggest you print this page as it contains details you'll need to run your event.</p>
+
+<h2>Managing your event</h2>
+
+<p>Some useful urls :</p>
+<table>
+	<tr><td>Event Dashboard<td><%= link_to event_url(@event), event_path(@event)%></td></tr>
+	<tr><td>Amend event details<td><%= link_to edit_event_url(@event), edit_event_path(@event)%></td></tr>
+	<tr><td>Submit a logo program<td><%= link_to new_event_attempt_url(@event), new_event_attempt_path(@event)%></td></tr>
+</table>
+
+<p><strong>Note:</strong> In order to updte your event details you'll need your event 'key', as you'll be prompted for it when you try to update any event details 
+(so we know it's you updating the details and not someone else).  You should keep your event key private and only allow people who you want to be able to manage your
+event have access to it.  Your event key is:</p>
+
+<ul><li><%= @event.key %></li></ul>
+
+<p>Once you've printed off this page, we'd suggest you go and view the <%= link_to 'logo program submission page', new_event_attempt_path(@event)%> that your particpants can use to submit their attempts.</p>

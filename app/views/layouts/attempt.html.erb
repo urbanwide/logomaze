@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title class="transText" id="htmlTitle">Maze Challenge</title>
+    <link href="/javascripts/lib/jquery-ui-1.8.6/jquery-ui-1.8.6.custom.css" rel="stylesheet" type="text/css"  />    
+    <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">    
+
+    <script src="/javascripts/lib/jquery-1.4.2/jquery-1.4.2.min.js"></script>
+    <script src="/javascripts/lib/jquery-canvas-1.1/jquery.canvas.js"></script>
+    <script src="/javascripts/lib/jquery-ui-1.8.6/jquery-ui-1.8.6.custom.min.js"></script>
+    <script src="/javascripts/lib/code-mirror-0.9/js/codemirror.js"></script>
+    <script src="/javascripts/functions.js"></script>
+    <script src="/javascripts/turtle.js"></script>
+    <script src="/javascripts/parserSource.js"></script>	 
+    <script type="text/javascript">
+    /* <![CDATA[ */
+     var lang = 'en';
+     var slang = window.location.search;
+     if(slang.length > 1) {
+       lang = slang.substr(1);       
+     }
+     document.write('<scr'+'ipt src="/javascripts/lang/'+lang+'/translation.js"></scr'+'ipt>');
+    /* ]]> */
+    </script>          
+    <script src="/javascripts/userInterface.js"></script>
+    
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="head">
+            <div id="status"></div>
+            <div id="toolbar" class="ui-widget-header ui-corner-all">                
+                <button id="debug">Debug</button>
+                <input type="checkbox" id="pause" /><label for="pause">Pause</label>
+                <button id="stop">Stop</button>
+                <input type="checkbox" id="timerButton" checked="checked" /><label for="timerButton">Time</label>
+                <div id="timerPanel">
+                    <span id="slider-titile"><span id="speedText">Speed: </span><span id="timerValue">350</span></span>
+                    <div id="slider-range-min"></div>                    
+                </div>
+            </div>
+          <h1 id="mainTitle">Maze Challenge</h1>
+      </div>
+      <div id="content">
+        <div id="resizableBarX">
+            <canvas id="canvas" width="500" height="400"></canvas>
+            <div id="sourcePanel">
+                <div id="sourceWrapper" class="border">
+                    <textarea id="source" cols="60" rows="50">
+<% if @attempt.program.blank? %>
+home
+clean
+
+repeat 4 [ 
+  forward 100 
+  right 90 
+]
+<% else %>
+<%= @attempt.program %>
+<% end %>
+
+</textarea>
+                </div>
+            </div>
+        </div>
+          
+       <div id="resizableBarY"></div>       
+        <div id="tabs">
+             <ul>
+                <li><a href="#send" class="transtext" id="sendText">Send</a></li>
+		<li><a href="#message" class="transText" id="messageText">Errors</a></li>
+		<li><a href="#watch" class="transText" id="debugText">Debug</a></li>              
+	     </ul>
+	     <div id="send">
+			
+			<%= yield %>
+
+			<script>
+				$('#data').submit(function() {
+					input = $('<input/>')
+            		.attr('type', 'hidden')
+            		.attr('name', 'attempt[program]')
+            		.val($('#source').val());
+				    $(this).append(input);
+				    return true;
+				});
+			</script>
+	     </div>	
+	     <div id="message"></div>	     
+	     <div id="watch"></div>
+	</div>
+
+    </div>                                                      
+    </div>                
+  </body>
+</html>

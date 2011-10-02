@@ -1,0 +1,12 @@
+<h1>Add a new event</h1>
+
+<p>We'll need some details from you to create your event.  We've asked you for your email address, but we'll only use this to check 
+you're the administrator of your event, if you ever need to contact us.  We'll never share your email address with anybody else and we'll 
+only ever email you in an emergency.</p>
+
+<p>Don't worry if you aren't sure about some fields, you can come back and edit them later.</p>
+
+<%= form_for @event do |f| %>
+  <%= render :partial => 'events/form', :locals => { :event => @event } %>
+  <%= f.submit %>
+<% end %>
