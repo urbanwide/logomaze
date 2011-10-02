@@ -11,7 +11,7 @@
 
 <div class="container">
 	
-	<% unless controller.action_name == 'show' %>
+	<% unless controller.controller_name == 'events' and controller.action_name == 'show' %>
 	<ul class="tabs">
 		<li><%= link_to 'Home', '/' %></li>
 		<li><%= link_to 'Help & Resources', help_pages_path %></li>
