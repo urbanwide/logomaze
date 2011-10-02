@@ -32,3 +32,7 @@ group :test do
   gem 'turn', :require => false
   gem 'rspec-rails', '>= 2.0.0.beta.10'
 end
+
+group :production do
+  gem 'pg'
+end
