@@ -16,6 +16,14 @@ class Attempt < ActiveRecord::Base
 
   belongs_to :event
 
+  def completed=(value)
+    if value
+      self.completed_at = Time.now 
+    else
+      self.completed_at = nil
+    end
+  end
+
   protected
   def set_token
     retryable(:tries => 10, :on => TokenExists) do
