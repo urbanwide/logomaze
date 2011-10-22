@@ -37,7 +37,7 @@ end
 opts[:attempt] = ARGV.shift
 
 nxc_file = "#{opts[:tmp_dir]}/#{opts[:event]}-#{opts[:attempt]}.nxc"
-rxe_name = opts[:output] || "#{opts[:event]}-#{opts[:attempt]}.rxe"
+rxe_name = opts[:name] || "#{opts[:event]}-#{opts[:attempt]}.rxe"
 rxe_file = "#{opts[:out_dir]}/#{rxe_name}"
 nbc_command = "/usr/local/bin/nbc -O=#{rxe_file} #{nxc_file}"
 
@@ -58,7 +58,7 @@ class Attempt
     @resource = "/events/#{event}/attempts/#{attempt}"
     @http = Net::HTTP.new(URI.parse(base_url).host)
 
-    @logo = fetch
+    @logo = label + fetch
   end
 
   def fetch
@@ -68,6 +68,10 @@ class Attempt
     raise "Could not get attempt from #{program}: response code: #{response.code}" unless response.code == "200"
 
     response.body
+  end
+
+  def label
+    %Q{print "#{attempt}: #{Time.now.strftime("%H:%M")}"\n}
   end
 
   def complete!(key)
