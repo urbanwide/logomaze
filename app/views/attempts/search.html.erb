@@ -1,0 +1,9 @@
+<h1>Search for an attempt</h2>
+	
+<p>If you have previously submitted an attempt, then enter your token below to find it:</p>
+
+<%= form_for [@event, @attempt], :url => retrieve_event_attempts_url(@event), :method => :post, :html => { :id => 'data'} do |f| %>
+  <%= f.label :id, 'Token' %>:
+  <%= f.text_field :id %><br />
+  <%= f.submit 'Find', :class => 'btn primary' %>
+<% end %>

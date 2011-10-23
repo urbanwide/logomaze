@@ -1,32 +1,24 @@
 class EventsController < ApplicationController
 
-  before_filter :assert_event, :only => [:show, :worksheet, :congratulations, :edit]
-
-  def index
-  end
+  before_filter :assert_event, :only => [:show, :worksheet, :congratulations, :edit, :presentation, :counter]
 
   def new
     @event = Event.new
   end
 
-  def show
+  def dashboard
     @count = @event.attempts.find(:all, :conditions => ['completed_at IS NOT NULL']).count
     render :template => 'events/show', :layout => 'dashboard'
-  end
-
-  def worksheet
   end
 
   def congratulations
   end
 
   def presentation
-    @event = Event.find(params[:id])
     render :template => 'events/presentation', :layout => false
   end
 
   def counter
-    @event = Event.find(params[:id])
     render :text => @event.attempts.find(:all, :conditions => ['completed_at IS NOT NULL']).count
   end
 
@@ -46,7 +38,7 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find_by_token(params[:id], :conditions => { :key => params[:event].delete(:key) })
-    Rails.logger.info @event.inspect
+    params[:event].delete(:email) if params[:event][:email].blank?
     respond_to do |format|
       if !@event.nil? && @event.update_attributes!(params[:event])
         flash[:notice] = 'Your details were successfully updated.'

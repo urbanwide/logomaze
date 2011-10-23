@@ -22,11 +22,11 @@ class AttemptsController < ApplicationController
     @attempt = @event.attempts.find(params[:id])
   end
 
-  def retrieve
-    @attempt = @event.attempts.new
+  def search
+    @attempt = Attempt.new
   end
 
-  def search
+  def retrieve
     @attempt = @event.attempts.find_by_token(params[:attempt][:id])
     if @attempt
       redirect_to event_attempt_path(@event, @attempt)
