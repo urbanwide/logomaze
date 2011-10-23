@@ -1,9 +1,88 @@
-<h1><%= @event.name %> dashboard</h1>
-
 <%= render :partial => '/shared/flash' , :locals => {:flash => flash} %>
 
-<div>Robots made it through the maze</div>
-<div>Twitter Account</div>
-<div>Flickr Photos</div>
+<div class="row">
+	<div class="span16">
+		<div class="row">
+			<div class="span6">&nbsp;</div>
+			<div class="span2">
+				<div style="font-size: 35px; line-height:38px">Robot Tries</div>
+			</div>
+			<div class="span2">
+				<div id="flip-counter" class="flip-counter"></div>
+			</div>
+			<div class="span6">&nbsp;</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="span6">
+		<% unless @event.twitter_account.blank? %>
+		<p style="font-size: 20px;">Latest from twitter</p>
+		<div id="twitter" style="width:300px"></div>
+		<% end %>
+	</div>
+	<div class="span10">
+		<% unless @event.flickr_group_id.blank? %>
+		<p style="font-size: 20px;">Latest from flickr</p>
+		<div id="flickr"></div>
+		<% end %>
+	</div>
+</div>
 
 
+<script type="text/javascript">
+        //<![CDATA[
+        var robotcounter;
+		function updateCounter(token)
+		{
+		      $.ajax({
+		                    method: 'get',
+		                    url : '/events/'+token+'/counter',
+		                    dataType : 'text',
+		                    success: function (text) { robotcounter.setValue(parseInt(text)); }
+		                 });
+		
+		}    
+        $(function(){
+            // Initialize a new counter
+            robotcounter = new flipCounter('flip-counter', {value: <%= @count %>, digits: 4, auto: false});
+        });  
+        setInterval("updateCounter('<%=h @event.token %>')", 5000);
+//]]>
+</script>
+
+<% unless @event.twitter_account.blank? %>
+<script type="text/javascript">
+$('#twitter').jTweetsAnywhere({
+    username: '<%=h @event.twitter_account %>',
+    count: 5,
+    showTweetFeed: {
+        showTimestamp: {
+            refreshInterval: 15
+        },
+        autorefresh: {
+            mode: 'auto-insert',
+            interval: 60
+        },
+        paging: { mode: 'none' }
+    }
+});
+</script>
+<% end %>
+
+<% unless @event.flickr_group_id.blank? %>
+<script type="text/javascript">
+$.getJSON("http://api.flickr.com/services/feeds/groups_pool.gne?jsoncallback=?",{id:"<%=h @event.flickr_group_id %>", format: "json" },
+  function(data) {
+    $.each(data.items, function(i,item){
+        console.log(item)
+        console.log(item.media)
+            $("<img/>").attr({src : item.media.m.replace('_m.','_z.')}).appendTo("#flickr");
+        if ( i == 3 ) {
+            $('#flickr').coinslider({ hoverPause: false, navigation: true, width: 640, height: 400, delay: 5000 });
+            return false;
+        }
+    });
+  });
+</script>
+<% end %>

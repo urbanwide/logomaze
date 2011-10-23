@@ -9,6 +9,10 @@ Maze::Application.routes.draw do
   end
   
   resources :events do
+    member do
+      get 'counter'
+      get 'presentation'
+    end
     resources :attempts do
       get 'program'
     end
