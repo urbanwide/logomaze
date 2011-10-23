@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+
+  before_filter :assert_event, :only => [:show, :worksheet, :congratulations, :edit]
+
   def index
   end
 
@@ -7,11 +10,12 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
   end
-  
+
+  def worksheet
+  end
+
   def congratulations
-    @event = Event.find(params[:id])
   end
 
   def create
@@ -26,7 +30,6 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:id])
   end
 
   def update
@@ -41,6 +44,11 @@ class EventsController < ApplicationController
         format.html { render :action => "edit" }
       end
     end    
+  end
+
+  protected
+  def assert_event
+    @event = Event.find(params[:id])
   end
 
 end

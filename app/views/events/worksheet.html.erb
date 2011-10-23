@@ -1,0 +1,80 @@
+<h2>Intro</h2>
+
+<p>The objective of this task is to program the robot to navigate through the maze.</p>
+
+<ol>
+<li>If you are doing this task for the first time, open the <%= link_to "program editor", new_event_attempt_url(@event) %> ( <%= new_event_attempt_url(@event) %> )</li>
+
+</ol>
+
+
+<h2>Commands</h2>
+
+<p>You can control the robot using the following commands:</p>
+
+<table>
+  <thead>
+    <tr>
+        <th>Command</th>
+        <th>Alternative</th>
+        <th>Description of command</th>
+        <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <th>forward <i>&lt;x&gt;</i></th>
+        <th>fd <i>&lt;x&gt;</i></th>
+        <td>Move the robot forward by <i>x</i> units.</td>
+        <td>forward 5</td>
+    </tr>
+    <tr>
+        <th>back <i>&lt;x&gt;</i></th>
+        <th>bk <i>&lt;x&gt;</i></th>
+        <td>Move the robot back by <i>x</i> units.</td>
+        <td>back 5</td>
+    </tr>
+    <tr>
+        <th>left <i>&lt;a&gt;</i></th>
+        <th>lt <i>&lt;a&gt;</i></th>
+        <td>Turn the robot <i>a</i> degrees to the left.</td>
+        <td>left 90</td>
+    </tr>
+    <tr>
+        <th>right <i>&lt;a&gt;</i></th>
+        <th>rt <i>&lt;a&gt;</i></th>
+        <td>Turn the robot <i>a</i> degrees to the right.</td>
+        <td>right 90</td>
+    </tr>
+    <tr>
+        <th>sleep <i>&lt;a&gt;</i></th>
+        <th> </th>
+        <td>The robot will sleep for <i>a</i> milliseconds.</td>
+        <td>sleep 1000</td>
+    </tr>
+
+  </tbody>
+</table>
+
+<h2>More advanced control structures</h2>
+
+<table>
+  <thead>
+    <tr>
+        <th>Command</th>
+        <th>Description of expression</th>
+        <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <th>repeat <i>&lt;K&gt;</i> [ <i>&lt;commands&gt;</i> ]</th>
+        <td>Repeat block <i>&lt;K&gt;</i>-times.</td>
+        <td><pre>
+repeat 4 [
+  left 90
+  fd 5
+]</pre></td>
+    </tr>
+  </tbody>
+</table>

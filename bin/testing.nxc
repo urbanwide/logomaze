@@ -1,0 +1,92 @@
+#define POWER 50 // was 50
+#define TURN_TIME_90 1870 // was 1800 // was 1670
+#define PACE_TIME 1200 // was 100
+
+#define CALIBRATE true
+#define BEEP true
+
+sub print(string text) {
+  ClearScreen();
+  TextOut(0,0, text);
+}
+
+sub wait() {
+  if(CALIBRATE == true) {
+    Wait(10000);
+  }
+}
+
+sub beep() {
+  if(BEEP == true) {
+    PlaySound(SOUND_FAST_UP);
+  }
+}
+
+inline int degrees_to_turn_time(int degrees) {
+  float one_degree_time = TURN_TIME_90 / 90.0;
+  int turn_time = one_degree_time * degrees;
+  return turn_time;
+}
+
+sub turn(int degrees) {
+  if (degrees < 0) {
+    degrees = degrees * -1;
+    OnRev(OUT_C, POWER);
+    OnFwd(OUT_B, POWER);
+  } else {
+    OnFwd(OUT_C, POWER);
+    OnRev(OUT_B, POWER);
+  }
+  Wait(degrees_to_turn_time(degrees));
+  Off(OUT_BC);
+  beep();
+  wait();
+}
+
+
+sub right(int degrees) {
+  turn(degrees);
+}
+
+sub left(int degrees) {
+  turn(-degrees);
+}
+
+sub forward(int paces) {
+  OnFwd(OUT_BC, POWER);
+  Wait(paces * PACE_TIME);
+  Off(OUT_BC);
+  beep();
+  wait();
+}
+
+sub back(int paces) {
+  OnRev(OUT_BC, POWER);
+  Wait(paces * PACE_TIME);
+  Off(OUT_BC);
+  beep();
+  wait();
+}
+
+sub maze() {
+  forward(1);
+  left(90);
+  forward(1);
+  right(90);
+  forward(1);
+  forward(1);
+}
+
+sub calibrate() {
+  right(90);
+}
+
+task main() {
+  TextOut(0,LCD_LINE1, "Before: " + NumToStr(BatteryLevel()));
+  calibrate();
+  TextOut(0,LCD_LINE2, "After: " + NumToStr(BatteryLevel()));
+  
+  //maze();
+}
+
+}

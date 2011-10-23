@@ -1,16 +1,23 @@
 Maze::Application.routes.draw do
-  
+
   root :to => 'pages#index'
-  
+
   resources :pages do
     collection do
       get 'help'
     end
   end
-  
+
   resources :events do
+    member do
+      get 'worksheet'
+    end
     resources :attempts do
       get 'program'
+      collection do
+        get 'retrieve'
+        post 'search'
+      end
     end
   end
 

@@ -16,6 +16,7 @@
 		<li><%= link_to 'Home', '/' %></li>
 		<li><%= link_to 'Help & Resources', help_pages_path %></li>
 		<% if @event %>
+		<li><%= link_to 'Worksheet', worksheet_event_path(@event) unless @event.new_record? %></li>
 		<li><%= link_to 'Amend Event', edit_event_path(@event) unless @event.new_record? %></li>
 		<li><%= link_to 'Submit Program', new_event_attempt_path(@event) unless @event.new_record? %></li>
 		<% else%>

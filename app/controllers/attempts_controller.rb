@@ -2,7 +2,6 @@ class AttemptsController < ApplicationController
   
   before_filter :assert_event
   
-  
   def new
     @attempt = Attempt.new
     render :template => 'attempts/new', :layout => 'attempt'
@@ -16,11 +15,25 @@ class AttemptsController < ApplicationController
       else
         format.html { render :template => "attempts/new", :layout => 'attempt' }
       end
-    end    
+    end
   end
 
   def show
     @attempt = @event.attempts.find(params[:id])
+  end
+
+  def retrieve
+    @attempt = @event.attempts.new
+  end
+
+  def search
+    @attempt = @event.attempts.find_by_token(params[:attempt][:id])
+    if @attempt
+      redirect_to event_attempt_path(@event, @attempt)
+    else
+      flash[:error] = "Unable to find your attempt"
+      redirect_to event_path(@event)
+    end
   end
 
   def program
@@ -30,7 +43,7 @@ class AttemptsController < ApplicationController
 
   def edit
     @attempt = @event.attempts.find(params[:id])
-    render :template => 'attempts/edit', :layout => 'attempt'    
+    render :template => 'attempts/edit', :layout => 'attempt'
   end
 
   def update

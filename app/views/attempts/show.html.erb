@@ -18,6 +18,7 @@
 <table>
 	<tr><td>Name</td><td><%=h @attempt.name %></td></tr>
 	<tr><td>Token</td><td><%= @attempt.token %></td></tr>
+	<tr><td>Link</td><td><%= edit_event_attempt_url(@event, @attempt) %></td></tr>
 </table>
 
 

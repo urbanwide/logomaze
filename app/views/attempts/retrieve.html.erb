@@ -1,0 +1,7 @@
+<%= render "shared/error_messages", :target => @attempt %> 
+
+<%= form_for [@event, @attempt], :url => search_event_attempts_url(@event), :method => :post, :html => { :id => 'data'} do |f| %>
+  <%= f.label :id, 'Token' %>:
+  <%= f.text_field :id %><br />
+  <%= f.submit 'Find', :class => 'btn primary' %>
+<% end %>

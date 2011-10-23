@@ -1,0 +1,84 @@
+#define POWER 50
+#define PACE_ROTATION_DEGREES 516
+#define TURN_90_ROTATION_DEGREES 516
+
+bool wait_time = 50;
+bool beeping = true;
+
+sub print(string text) {
+  ClearScreen();
+  TextOut(0,0, text);
+}
+
+sub wait(int ms) {
+  Wait(ms);
+}
+
+sub beep() {
+  PlaySound(SOUND_FAST_UP);
+}
+
+sub move_wait() {
+  wait(wait_time);
+}
+
+sub move_beep() {
+  if (beeping == true) {
+    beep();
+  }
+}
+
+sub move_end() {
+  move_beep();
+  move_wait();
+}
+
+sub set_move_wait(int ms) {
+  wait_time = ms;
+}
+
+sub set_move_beep(bool val) {
+  beeping = val;
+}
+
+inline int degrees_to_rotation_degrees(int degrees) {
+  float one_degree_time = TURN_90_ROTATION_DEGREES / 90.0;
+  int rotation_degrees = one_degree_time * degrees;
+  return rotation_degrees;
+}
+
+sub right(int degrees) {
+  RotateMotorEx(OUT_BC, POWER, degrees_to_rotation_degrees(degrees), 100, true, true);
+  move_end();
+}
+
+sub left(int degrees) {
+  RotateMotorEx(OUT_BC, POWER, degrees_to_rotation_degrees(degrees), -100, true, true);
+  move_end();
+}
+
+sub forward(int paces) {
+  RotateMotor(OUT_BC, POWER, (PACE_ROTATION_DEGREES * paces));
+  move_end();
+}
+
+sub back(int paces) {
+  RotateMotor(OUT_BC, POWER, (-PACE_ROTATION_DEGREES * paces));
+  move_end();
+}
+
+sub maze() {
+  forward(3);
+  right(90);
+  forward(5);
+  left(90);
+  forward(2);
+  right(90);
+  forward(6);
+  left(90);
+  forward(4);
+}
+
+task main() {
+  maze();
+}
