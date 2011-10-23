@@ -6,7 +6,7 @@ class Event < ActiveRecord::Base
   
   set_primary_key 'token'
 
-  attr_accessible :name, :email, :instructions
+  attr_accessible :name, :email, :instructions, :flickr_group_id, :twitter_account
 
   before_validation :set_token, :set_key, :on => :create
 
@@ -19,6 +19,8 @@ class Event < ActiveRecord::Base
                     :format => {:with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i}
   validates :name, :presence => true,
                    :length => {:minimum => 3, :maximum => 254} 
+  validates :twitter_account, :length => {:minimum => 0, :maximum => 254}
+  validates :flickr_group_id, :length => {:minimum => 0, :maximum => 254}
   validates :instructions, :length => { :maximum => 2000 }
 
   protected

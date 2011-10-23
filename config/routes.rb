@@ -11,6 +11,8 @@ Maze::Application.routes.draw do
   resources :events do
     member do
       get 'worksheet'
+      get 'counter'
+      get 'presentation'
     end
     resources :attempts do
       get 'program'

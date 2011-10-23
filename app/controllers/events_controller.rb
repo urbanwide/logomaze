@@ -10,12 +10,24 @@ class EventsController < ApplicationController
   end
 
   def show
+    @count = @event.attempts.find(:all, :conditions => ['completed_at IS NOT NULL']).count
+    render :template => 'events/show', :layout => 'dashboard'
   end
 
   def worksheet
   end
 
   def congratulations
+  end
+
+  def presentation
+    @event = Event.find(params[:id])
+    render :template => 'events/presentation', :layout => false
+  end
+
+  def counter
+    @event = Event.find(params[:id])
+    render :text => @event.attempts.find(:all, :conditions => ['completed_at IS NOT NULL']).count
   end
 
   def create
@@ -34,8 +46,9 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find_by_token(params[:id], :conditions => { :key => params[:event].delete(:key) })
+    Rails.logger.info @event.inspect
     respond_to do |format|
-      if !@event.nil? && @event.update_attributes(params[:event])
+      if !@event.nil? && @event.update_attributes!(params[:event])
         flash[:notice] = 'Your details were successfully updated.'
         format.html { redirect_to event_path(@event) }
       else

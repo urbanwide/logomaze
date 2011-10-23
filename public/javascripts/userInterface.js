@@ -48,7 +48,7 @@ function run() {
 
 // spusteni krokovani 
 function stepRun() {   
-  $('#tabs').tabs( "select" , 1);
+  //$('#tabs').tabs( "select" , 1);
   if ($('#timerButton').attr('checked')) {
         setStatus(translate('krokuji_automat').replace('%d',speedDebug));
         timerLogo = setInterval(StartDebug, speedDebug);        
@@ -98,7 +98,7 @@ function StartDebug() {
     } catch(ex){
         $('#message').html(ex.message);
         StopDebug();
-        $('#tabs').tabs( "select" , 0 );
+        $('#tabs').tabs( "select" , 1 );
     }
 }
 
@@ -373,10 +373,10 @@ $(document).ready(function(){
     ResizePanels();
     TranslateText();
     setEventForElemets();
-    LoadExamplesList();    
+    //LoadExamplesList();    
     turtle = new Turtle($('#canvas'));   
     turtle.draw();
-    $.get('lang/'+lang+'/syntax.html',function(data) {
+    $.get('/javascripts/lang/'+lang+'/syntax.html',function(data) {
           $('#syntax').html(data);
      });
 });

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Maze</title>
+</head>
+<body>
+<iframe name="Frame1" id="Frame1" src="" frameborder="0" width=100% height=800></iframe>
+
+<script>
+var arrURL=new Array (
+"<%= event_path(@event.id) %>",
+"/pages/help");
+var curIndex=0;
+var timer=0;
+var refreshRate=30; //seconds
+function ChangeFrame()
+{
+clearTimeout(timer);
+var url=arrURL[curIndex];
+document.getElementById('Frame1').setAttribute('src',url);
+curIndex = ((curIndex+1)%arrURL.length);
+timer = setTimeout("ChangeFrame()", refreshRate*1000);
+}
+ChangeFrame();
+</script>
+</body>
+</html>
