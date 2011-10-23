@@ -11,12 +11,19 @@ function Turtle (canvasElement, canvasElementArrow) {
     this.canvas = null;
     this.canvasArrow = null;
     this.extraArrowCanvas = false;
+    
+    // real position of zero point
+    this.xReal = -249;
+    this.yReal = 180
+    
     // position of zero point
     this.x0 = 0;
     this.y0 = 0;
+
     // actual position
-    this.x = 0;
-    this.y = 0;
+    this.x = this.xReal;
+    this.y = this.yReal;
+    
     // angle of rotate
     this.angle = 0;
     // pen is down
@@ -67,7 +74,9 @@ function Turtle (canvasElement, canvasElementArrow) {
         this.right(-1*angle);
     }
 
-    this.forward = function(step) {     
+    this.forward = function(step) {
+    	// Convert to a healthy amount of movement onscreen
+    	step = Math.ceil(step * 50);
         var rad = this.angle * Math.PI / 180;
         var ox = this.x;
         var oy = this.y;
@@ -104,7 +113,7 @@ function Turtle (canvasElement, canvasElementArrow) {
     }
 
     this.home = function() {
-        this.x=0; this.y=0;
+        this.x=this.xReal; this.y=this.yReal;
     }
 
     this.hide = function() {
@@ -132,7 +141,6 @@ function Turtle (canvasElement, canvasElementArrow) {
     } else {
         this.canvasArrow = this.canvas;
     }
-
     this.x0 = Math.ceil(this.canvasElement.width() / 2);
     this.y0 = Math.ceil(this.canvasElement.height() / 2);
     this.clean();

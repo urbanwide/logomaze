@@ -373,10 +373,10 @@ $(document).ready(function(){
     ResizePanels();
     TranslateText();
     setEventForElemets();
-    LoadExamplesList();    
+    //LoadExamplesList();    
     turtle = new Turtle($('#canvas'));   
     turtle.draw();
-    $.get('lang/'+lang+'/syntax.html',function(data) {
+    $.get('/javascripts/lang/'+lang+'/syntax.html',function(data) {
           $('#syntax').html(data);
      });
 });
