@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 
-  before_filter :assert_event, :only => [:show, :worksheet, :congratulations, :edit, :presentation, :counter]
+  before_filter :assert_event, :only => [:show, :worksheet, :congratulations, :edit, :presentation, :counter, :dashboard]
 
   def new
     @event = Event.new
