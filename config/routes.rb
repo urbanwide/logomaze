@@ -15,8 +15,10 @@ Maze::Application.routes.draw do
       get 'presentation'
     end
     resources :attempts do
-      collection do
+      member do
         get 'program'
+      end
+      collection do
         get 'search'
         post 'retrieve'
       end
