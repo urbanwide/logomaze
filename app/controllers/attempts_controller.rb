@@ -37,7 +37,7 @@ class AttemptsController < ApplicationController
   end
 
   def program
-    @attempt = @event.attempts.find(params[:attempt_id])
+    @attempt = @event.attempts.find(params[:id])
     render :text =>  @attempt.program
   end
 
