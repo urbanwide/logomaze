@@ -8,7 +8,7 @@ class EventsController < ApplicationController
 
   def dashboard
     @count = @event.attempts.find(:all, :conditions => ['completed_at IS NOT NULL']).count
-    render :template => 'events/show', :layout => 'dashboard'
+    render :template => 'events/dashboard', :layout => 'dashboard'
   end
 
   def congratulations
