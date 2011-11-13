@@ -5,6 +5,7 @@ Maze::Application.routes.draw do
   resources :pages do
     collection do
       get 'help'
+      get 'resources'
     end
   end
 

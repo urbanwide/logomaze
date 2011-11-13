@@ -4,14 +4,19 @@
 
 <p>The objective of this task is to write a computer program to navigate the robot through the maze.</p>
 
-<ol>
-<li>If you are doing this task for the first time, open the <%= link_to "program editor", new_event_attempt_url(@event) %> (<%= new_event_attempt_url(@event) %>)</li>
-<li>If you wish to edit a previous attempt then <%= link_to "search here", search_event_attempts_url(@event) %> (<%= search_event_attempts_url(@event) %>)</li>
-<li>Type your program into the right hand box (the one with numbers down the left hand side)</li>
-<li>Click the run button <%= image_tag "run-button.png" %> on the top right button panel to test your program and see what path the robot would take through the maze</li>
-<li>When you are happy with your program, enter your name in the "Send" tab at the bottom of the program editor and click "Submit"</li>
-<li>Either print that page or write down the 5 letter token and take it through to the Court Room where you will be able to see what path you have made the robot take</li>
-</ol>
+<dl>
+  <dt>Open the editor</dt>
+    <dd>If you are doing this task for the first time, open the <%= link_to "program editor", new_event_attempt_url(@event) %> (<%= new_event_attempt_url(@event) %>)</dd>
+    <dd>If you wish to edit a previous attempt then <%= link_to "search here", search_event_attempts_url(@event) %> (<%= search_event_attempts_url(@event) %>)</dd>
+    <dt>Type in your program</dt>
+      <dd>Type your program into the right hand box (the one with numbers down the left hand side)</dd>
+    <dt>Run your program</dt>
+    <dd>Click the run button <%= image_tag "run-button.png" %> on the top right button panel to test your program and see what path the robot would take through the maze</dd>
+    <dt>Save your program</dt>
+    <dd>When you are happy with your program, enter your name in the "Send" tab at the bottom of the program editor and click "Submit"</dd>
+    <dt>Print the page or write down the token</dt>
+    <dd>Either print that page or write down the 5 letter token and take it through to the Court Room where you will be able to see what path you have made the robot take</dd>
+</dl>
 
 <h2>Plan of the maze:</h2>
 <p>The robot will start on the "start" square and you will need to program the robot to navigate to the red arrow.</p>
