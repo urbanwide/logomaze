@@ -32,7 +32,7 @@ function run() {
     turtle = new Turtle($('#canvas'));
     turtle.clean();
     automat = new ParserSource(turtle, $('#source').val());
-    
+
     try {
         automat.run();
     } catch(ex){

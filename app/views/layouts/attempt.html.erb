@@ -48,18 +48,10 @@
             <div id="sourcePanel">
                 <div id="sourceWrapper" class="border">
                     <textarea id="source" cols="60" rows="50">
-<% if @attempt.program.blank? %>
-home
-clean
-
-repeat 4 [ 
-  forward 1
-  right 90 
-]
-<% else %>
+<%- if @attempt.program.blank? -%>
+<%- else %>
 <%= @attempt.program %>
-<% end %>
-
+<%- end %>
 </textarea>
                 </div>
             </div>
