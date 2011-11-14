@@ -1,31 +1,87 @@
-<h2>Intro</h2>
-
 <%= render :partial => '/shared/flash', :locals => {:flash => flash} %>
 
+<div class="container">
+  <div class="hero-unit">
+  <h1>Navigate the Maze</h1>
+  <p>Write a computer program to navigate the robot through the maze.</p>
+  </div>
 
-<style>
-</style>
-
-<p>The objective of this task is to write a computer program to navigate the robot through the maze.</p>
-
-<dl>
-  <dt>Open the editor</dt>
-    <dd>If you are doing this task for the first time, open the <%= link_to "program editor", new_event_attempt_url(@event) %> (<%= new_event_attempt_url(@event) %>)</dd>
-    <dd>If you wish to edit a previous attempt then <%= link_to "search here", search_event_attempts_url(@event) %> (<%= search_event_attempts_url(@event) %>)</dd>
-  <dt>Type in your program</dt>
-      <dd>Type your program into the right hand box (the one with numbers down the left hand side)</dd>
-    <dt>Run your program</dt>
-    <dd>Click the run button <%= image_tag "run-button.png" %> on the top right button panel to test your program and see what path the robot would take through the maze</dd>
-    <dt>Save your program</dt>
-    <dd>When you are happy with your program, enter your name in the "Send" tab at the bottom of the program editor and click "Submit"</dd>
-    <dt>Print the page or write down the token</dt>
-    <dd>Either print that page or write down the 5 letter token and take it through to the Court Room where you will be able to see what path you have made the robot take</dd>
-</dl>
+  <div class="row">
+    <div class="span3">
+      <%= image_tag "/images/worksheet/open.jpg", :width => 170, :class=> "thumbnail" %>
+    </div>
+    <div class="span13">
+      <div class="row">
+        <div class="span13">
+          <h2>Open the editor</h2>
+          <p>If you are doing this task for the first time, open the <%= link_to "program editor", new_event_attempt_url(@event) %>.</p>
+          <p><%= link_to new_event_attempt_url(@event), new_event_attempt_url(@event), :class=>"btn info" %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">&nbsp;</div>
+  <div class="row">
+    <div class="span3">
+      <%= image_tag "/images/worksheet/program.jpg", :width => 170, :class=> "thumbnail" %>
+    </div>
+    <div class="span13">
+      <div class="row">
+        <div class="span13">
+          <h2>Type in your program</h2>
+          <p>Type your program into the <code>right hand box</code> (the one with numbers down the left hand side).</p>
+          <p>Each command must be on a separate line. Commands will show in green when they are correct and black when they are not.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">&nbsp;</div>
+  <div class="row">
+    <div class="span3">
+      <%= image_tag "/images/worksheet/run.jpg", :width => 170, :class=> "thumbnail" %>
+    </div>
+    <div class="span13">
+      <div class="row">
+        <div class="span13">
+          <h2>Run your program</h2>
+          <p>Click the <code>run</code> button on the top right button panel to test your program and see what path the robot would take through the maze.</p><p>You will be able to see a simulation of the path the robot will take in the left panel.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">&nbsp;</div>
+  <div class="row">
+    <div class="span3">
+      <%= image_tag "/images/worksheet/save.jpg", :width => 170, :class=> "thumbnail" %>
+    </div>
+    <div class="span13">
+      <div class="row">
+        <div class="span13">
+          <h2>Save your program</h2>
+          <p>When you are happy with your program, <code>enter your name</code> in the <code>Send</code> tab at the bottom of the program editor and click the <code>Submit</code> button.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">&nbsp;</div>
+  <div class="row">
+    <div class="span3">
+      <%= image_tag "/images/worksheet/saved.jpg", :width => 170, :class=> "thumbnail" %>
+    </div>
+    <div class="span13">
+      <div class="row">
+        <div class="span13">
+          <h2>Write down your token</h2>
+          <p><code>Write down the 5 letter token</code> and <code>take it through to the Court Room</code> where you will be able to see what path you have made the robot take.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <h2>Commands</h2>
 
-<p>You will need to write a list of commands for the robot to follow into the program editor to get the robot to navigate the maze.</p>
-<p>Each command must be on a separate line. The commands look like this:</p>
+<p>The commands you will need to use look like this:</p>
 
 <table>
   <thead>
@@ -51,42 +107,11 @@
       <td>right 90</td>
       <td>Turn the robot <i>90</i> degrees to the right.</td>
     </tr>
-    <tr>
-      <td>beep</td>
-      <td>The robot will make a beeping noise.</td>
-    </tr>
-    <tr>
-      <td>sleep 1000</td>
-      <td>The robot will sleep for <i>1000</i> milliseconds.</td>
-    </tr>
   </tbody>
 </table>
 
-<h2>More advanced control structures</h2>
-
-<table>
-  <thead>
-    <tr>
-        <th>Command</th>
-        <th>Description of expression</th>
-        <th>Example</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-        <th>repeat <i>&lt;K&gt;</i> [ <i>&lt;commands&gt;</i> ]</th>
-        <td>Repeat block <i>&lt;K&gt;</i>-times.</td>
-        <td><pre>
-repeat 4 [
-  left 90
-  fd 5
-]</pre></td>
-    </tr>
-  </tbody>
-</table>
-
-<h2>Plan of the maze:</h2>
+<h2>The Maze</h2>
 <p>The robot will start on the "start" square and you will need to program the robot to navigate to the red arrow.</p>
 <p>Each large square on the maze plan equates to 1 unit.</p>
 
-<a href="/worksheet.pdf" alt="view bigger version"><%= image_tag "worksheet-medium.png" %></a>
+<%= link_to "Plan of the maze", "/worksheet.pdf", :class => "btn info" %>

@@ -4,21 +4,15 @@
 	<em>Congratulations</em>, you've submitted your program !
 </div>
 
-<% unless @attempt.event.instructions.blank? %>
-<h2>What do I do next ?</h2>
-<p><%=h @attempt.event.instructions %></p>
-<% end %>
+<div class="container">
+  <div class="hero-unit">
+  <h1><%= @attempt.token %></h1>
+  <p>This is your token. <code>Write it down</code> and <code>take it through to the Court Room</code> where you will be able to see what path you have made the robot take.</p>
+  </div>
+</div>
 
-<p>Your Program (<%= link_to 'edit', edit_event_attempt_path(@event, @attempt) %>):</p>
+<h2>Your Program:</h2>
 <pre class="prettyprint">
 <%=h @attempt.program %>
 </pre>
-
-<h2>Details</h2>
-<table>
-	<tr><td>Name</td><td><%=h @attempt.name %></td></tr>
-	<tr><td>Token</td><td><%= @attempt.token %></td></tr>
-	<tr><td>Link</td><td><%= edit_event_attempt_url(@event, @attempt) %></td></tr>
-</table>
-
-
+<%= link_to 'edit', edit_event_attempt_path(@event, @attempt), :class => "btn primary" %>
