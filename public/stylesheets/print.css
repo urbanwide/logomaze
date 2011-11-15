@@ -1,0 +1,8 @@
+.tabs, .noprint {
+    display: none;
+}
+
+.hero-unit {
+  margin-bottom: 20px;
+  padding: 10px;
+}

@@ -2,7 +2,8 @@
 <html>
 <head>
   <title><%= @title %></title>
-  <%= stylesheet_link_tag "bootstrap" %>
+  <%= stylesheet_link_tag "bootstrap", :media => "all" %>
+  <%= stylesheet_link_tag "print", :media => "print" %>
   <%= javascript_include_tag "jquery.min" %>
   <%#= stylesheet_link_tag "style" %>
   <%# javascript_include_tag "application" %>
