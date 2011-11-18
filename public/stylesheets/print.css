@@ -6,3 +6,8 @@
   margin-bottom: 20px;
   padding: 10px;
 }
+
+.btn.info {
+  color: #000;
+  background: white;
+}

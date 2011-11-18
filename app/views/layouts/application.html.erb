@@ -15,7 +15,7 @@
 	<ul class="tabs">
 		<% if @event %>
 		<li><%= link_to 'Worksheet', event_path(@event) unless @event.new_record? %></li>
-		<li><%= link_to 'Submit Program', new_event_attempt_path(@event) unless @event.new_record? %></li>
+		<li><%= link_to 'Program Editor', new_event_attempt_path(@event) unless @event.new_record? %></li>
 		<li><%= link_to 'Find Program', search_event_attempts_path(@event) unless @event.new_record? %></li>
 		<% end %>
 		<li><%= link_to 'Resources', resources_pages_path %></li>
