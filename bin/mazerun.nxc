@@ -2,7 +2,7 @@
 #define PACE_ROTATION_DEGREES 516
 #define TURN_90_ROTATION_DEGREES 506
 
-int wait_time = 10000;
+int wait_time = 100;
 bool beeping = true;
 
 sub print(string text) {
