@@ -1,12 +1,12 @@
 class Attempt < ActiveRecord::Base
-  
+
   include Retryable
   class TokenExists < StandardError; end
-  
+
   set_primary_key 'token'
-  
-  attr_accessible :name, :program
-  
+
+  attr_accessible :name, :program, :completed
+
   validates_presence_of :token, :event_id
   validates_uniqueness_of :token
   validates :name, :presence => true,

@@ -50,9 +50,10 @@ class AttemptsController < ApplicationController
     @attempt = @event.attempts.find(params[:id])
     protected_fields = [:completed]
 
-    #unless params[:attempt].key?(:key) and @attempt.event.key == params[:attempt].delete(:key)
-    #   protected_fields.each { |field| params[:attempt].delete(field) }
-    #end
+    unless params[:attempt].key?(:key) and @attempt.event.key == params[:attempt].delete(:key)
+      protected_fields.each { |field| params[:attempt].delete(field) }
+    end
+
     logger.error params[:attempt].inspect
     respond_to do |format|
       if @attempt.update_attributes(params[:attempt])

@@ -56,7 +56,7 @@ class Attempt
     end
 
     @resource = "/events/#{event}/attempts/#{attempt}"
-    @http = Net::HTTP.new(URI.parse(base_url).host)
+    @http = Net::HTTP.new(URI.parse(base_url).host, URI.parse(base_url).port)
 
     @logo = label + fetch
   end
