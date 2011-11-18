@@ -1,3 +1,16 @@
+* {
+  color: #000;
+}
+
+a {
+  color: #000;
+}
+
+code {
+  color: #000;
+  font-weight: bold;
+}
+
 .tabs, .noprint {
     display: none;
 }

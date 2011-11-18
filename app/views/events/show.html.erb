@@ -18,7 +18,7 @@
           <h2>Open the program editor</h2>
           <p>If you are doing this task for the first time, open the <%= link_to "program editor", new_event_attempt_url(@event) %>.</p>
           <p><%= link_to new_event_attempt_url(@event), new_event_attempt_url(@event), :class=>"btn info" %></p>
-          <p>Otherwise if you have a token and wish to edit a program you've made previously, <%= link_to "search for it here", search_event_attempts_path(@event) %>.</p>
+          <p>Otherwise if you have a token and wish to edit a program you've made previously, open the <%= link_to "program finder", search_event_attempts_path(@event) %>.</p>
         </div>
       </div>
     </div>
