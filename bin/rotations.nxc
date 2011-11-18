@@ -1,6 +1,8 @@
 #define POWER 50
 #define PACE_ROTATION_DEGREES 516
-#define TURN_90_ROTATION_DEGREES 516
+#define TURN_90_ROTATION_DEGREES 516 // was 516
+#define TURN_RIGHT 516 // was 516
+#define TURN_LEFT 516 // was 516
 
 bool wait_time = 50;
 bool beeping = true;
@@ -48,12 +50,14 @@ inline int degrees_to_rotation_degrees(int degrees) {
 }
 
 sub right(int degrees) {
-  RotateMotorEx(OUT_BC, POWER, degrees_to_rotation_degrees(degrees), 100, true, true);
+  // RotateMotorEx(OUT_BC, POWER, degrees_to_rotation_degrees(degrees), 100, true, true);
+  RotateMotorEx(OUT_BC, POWER, TURN_RIGHT, 100, true, true);
   move_end();
 }
 
 sub left(int degrees) {
-  RotateMotorEx(OUT_BC, POWER, degrees_to_rotation_degrees(degrees), -100, true, true);
+  // RotateMotorEx(OUT_BC, POWER, degrees_to_rotation_degrees(degrees), -100, true, true);
+  RotateMotorEx(OUT_BC, POWER, TURN_LEFT, -100, true, true);
   move_end();
 }
 
@@ -68,15 +72,8 @@ sub back(int paces) {
 }
 
 sub maze() {
-  forward(3);
-  right(90);
-  forward(5);
   left(90);
-  forward(2);
   right(90);
-  forward(6);
-  left(90);
-  forward(4);
 }
 
 task main() {
