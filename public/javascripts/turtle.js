@@ -14,7 +14,7 @@ function Turtle (canvasElement, canvasElementArrow) {
 
     // real position of zero point
     this.xReal = -150;
-    this.yReal = -150;
+    this.yReal = +100;
 
     // position of zero point
     this.x0 = 0;
@@ -76,7 +76,7 @@ function Turtle (canvasElement, canvasElementArrow) {
 
     this.forward = function(step) {
         // Convert to a healthy amount of movement onscreen
-        step = Math.ceil(step * 25);
+        step = Math.ceil(step * 2);
         var rad = this.angle * Math.PI / 180;
         var ox = this.x;
         var oy = this.y;
