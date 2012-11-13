@@ -13,7 +13,7 @@ function Turtle (canvasElement, canvasElementArrow) {
     this.extraArrowCanvas = false;
 
     // real position of zero point
-    this.xReal = -150;
+    this.xReal = -200;
     this.yReal = +100;
 
     // position of zero point
@@ -25,7 +25,7 @@ function Turtle (canvasElement, canvasElementArrow) {
     this.y = this.yReal;
 
     // angle of rotate
-    this.angle = 90;
+    this.angle = 0;
 
     // pen is down
     this.pen = true;
