@@ -1,8 +1,8 @@
 #define POWER 50
-#define PACE_ROTATION_DEGREES 516
-#define TURN_90_ROTATION_DEGREES 506
+#define PACE_ROTATION_DEGREES 35 // 516
+#define TURN_90_ROTATION_DEGREES 506 // 506
 
-int wait_time = 10000;
+int wait_time = 1000; //1000
 bool beeping = true;
 
 sub print(string text) {
@@ -67,16 +67,102 @@ sub back(int paces) {
   move_end();
 }
 
+sub pendown() {
+  RotateMotor(OUT_A, POWER, 18);
+}
+
+sub penup() {
+  RotateMotor(OUT_A, POWER, -18);
+}
+
+sub square() {
+  forward(20);
+  left(90);
+  forward(20);
+  left(90);
+  forward(20);
+  left(90);
+  forward(20);
+}
+
+sub triangle() {
+  forward(3);
+  right(120);
+  forward(3);
+  right(120);
+  forward(3);
+  right(120);
+}
+
+sub circle() {
+  for (int i=0; i<20; i++) {
+    forward(1);
+    right(18);
+  }
+}
+
+sub pentagon() {
+  forward(20);
+  right(72);
+  forward(20);
+  right(72);
+  forward(20);
+  right(72);
+  forward(20);
+  right(72);
+  forward(20);
+}
+
+sub simple() {
+  forward(70);
+  left(90);
+  forward(60);
+  left(90);
+  forward(30);
+  right(90);
+  forward(60);
+  right(90);
+  forward(70);
+}
+
+sub wrong1() {
+  forward(70);
+  left(90);
+  forward(60);
+  left(90);
+  forward(30);
+  right(90);
+  forward(60);
+  left(90);
+  forward(30);
+  left(90);
+  forward(90);
+  left(90);
+  forward(30);
+}
+
+sub wrong2() {
+  forward(70);
+  left(90);
+  forward(60);
+  left(90);
+  forward(30);
+  right(90);
+  forward(30);
+  right(90);
+  forward(60);
+  right(90);
+  forward(60);
+
+}
+
 task maze() {
-forward(3);
-right(90);
-forward(5);
-left(90);
-forward(2);
-right(90);
-forward(6);
-left(90);
-forward(4);
+  penup();
+  pendown();
+
+  print("Calibrate");
+  simple();
+
 }
 
 task red() {
