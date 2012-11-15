@@ -1,5 +1,6 @@
 <%= render :partial => '/shared/flash' , :locals => {:flash => flash} %>
 
+
 <div class="row">
   <div class="span6">
     <% unless @event.twitter_account.blank? %>
@@ -9,11 +10,11 @@
   </div>
   <div class="span10">
     <div class="row" style="background-color: #f7f7f7">
-      <div class="span2">
-        <div id="flip-counter" class="flip-counter"></div>
+      <div class="span7" style="text-align:right;">
+        <h1>Robot Challenges Complete:</h1>
       </div>
-      <div class="span4">
-        <h1>Robot Maze Champions</h1>
+      <div class="span3">
+        <div id="flip-counter" class="flip-counter"></div>
       </div>
     </div>
     <div class="row">

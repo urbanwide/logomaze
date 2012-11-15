@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   
   protected
   def set_title
-    @title = "Escape the maze"
+    @title = "Robot Programming"
   end
   
 end
