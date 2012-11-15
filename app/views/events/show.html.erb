@@ -2,8 +2,53 @@
 
 <div class="container">
   <div class="hero-unit">
-  <h1>Navigate the Maze</h1>
-  <p>Write a computer program to navigate the robot through the maze.</p>
+    <h1>Robot Programming</h1>
+    <p>Write a computer program to navigate the robot through the maze or try out our drawing robot.</p>
+  </div>
+
+  <div style="margin:20px 20px 20px 20px;">
+    <h2>Task 1: Navigate the Maze</h2>
+    <p>Write a computer program to navigate the robot through the maze.</p>
+  </div>
+
+  <div class="row">
+    <div class="span4 media-grid">
+      <%= link_to image_tag("/images/worksheet/worksheet-2012-maze-medium.jpg", :width => 170), "/worksheet-2012-maze.pdf" %>
+    </div>
+    <div class="span12">
+      <div class="row">
+        <div class="span12">
+          <p>This is a plan of the maze that is found in the Robing Room.</p>
+          <p>The robot will begin on the <code>start square</code> and you will need to program the robot to navigate to the <code>red arrow</code>.</p>
+          <p>Each <code>large square</code> on the maze plan equates to <code>10 units</code>.</p>
+          <p><%= link_to "Plan of the maze", "/worksheet-2012-maze.pdf", :class => "btn info noprint" %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin:20px 20px 20px 20px;">
+    <h2>Task 2: Draw a shape</h2>
+    <p>Write a computer program to instruct our badly behaved drawing robot Billy to draw a shape.</p>
+  </div>
+
+  <div class="row">
+    <div class="span4 media-grid">
+      <%= link_to image_tag("/images/worksheet/worksheet-2012-maze-medium.jpg", :width => 170), "/worksheet-2012-maze.pdf" %>
+    </div>
+    <div class="span12">
+      <div class="row">
+        <div class="span12">
+          <p>Some shapes you could try include a square, traingle, rectangle or pentagon.</p>
+          <p>The robot will attempt to draw your shape. The robot isn't </p>
+          <p><%= link_to "Example shapes", "/worksheet-2012-maze.pdf", :class => "btn info noprint" %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin:20px 20px 20px 20px;">
+    <h2>Writing the computer program</h2>
   </div>
 
   <div class="row">
@@ -104,12 +149,12 @@
       </thead>
       <tbody>
         <tr>
-          <td>forward 5</td>
-          <td>Move the robot forward by <i>5</i> units.</td>
+          <td>forward 50</td>
+          <td>Move the robot forward by <i>50</i> units.</td>
         </tr>
         <tr>
-          <td>back 5</td>
-          <td>Move the robot back by <i>5</i> units.</td>
+          <td>back 50</td>
+          <td>Move the robot back by <i>50</i> units.</td>
         </tr>
         <tr>
           <td>left 90</td>
@@ -119,25 +164,17 @@
           <td>right 90</td>
           <td>Turn the robot <i>90</i> degrees to the right.</td>
         </tr>
+        <tr>
+          <td>pendown</td>
+          <td>put the pen <i>down</i> on the paper</td>
+        </tr>
+        <tr>
+          <td>penup</td>
+          <td>lift the pen <i>up</i> off the paper</td>
+        </tr>
       </tbody>
     </table>
   </div>
 
-  <div class="row noprint">
-    <div class="span4 media-grid">
-      <%= link_to image_tag("/images/worksheet/worksheet-medium.jpg", :width => 170), "/worksheet.pdf" %>
-    </div>
-    <div class="span12">
-      <div class="row">
-        <div class="span12">
-          <h2>The Maze</h2>
-          <p>This is a plan of the maze that is found in the Robing Room.</p>
-          <p>The robot will begin on the <code>start square</code> and you will need to program the robot to navigate to the <code>red arrow</code>.</p>
-          <p>Each <code>large square</code> on the maze plan equates to <code>1 unit</code>.</p>
-          <p><%= link_to "Plan of the maze", "/worksheet.pdf", :class => "btn info" %></p>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
