@@ -100,12 +100,12 @@ puts out if opts[:verbose]
 
 puts "rxe file can now be found at: #{rxe_file}"
 
-puts "Did the user with attempt token #{opts[:attempt]} make it through the maze?"
+puts "Did the user with attempt token #{opts[:attempt]} complete the challenge?"
 pass = gets.chomp
 
 if pass =~/^(yes|y|true|1)$/
   att.complete!(opts[:key])
-  puts "Great! Updating the server to say that #{opts[:attempt]} made it through the maze"
+  puts "Great! Updating the server to say that #{opts[:attempt]} completed the challenge"
 else
-  puts "#{opts[:attempt]} did not make it through the maze this time"
+  puts "#{opts[:attempt]} did not complete the challenge this time"
 end
