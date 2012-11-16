@@ -72,6 +72,7 @@
 
 			<script>
 				$('#data').submit(function() {
+        $('#source').val(editor.getCode());
 					input = $('<input/>')
             		.attr('type', 'hidden')
             		.attr('name', 'attempt[program]')
