@@ -1,6 +1,5 @@
 <%= render :partial => '/shared/flash' , :locals => {:flash => flash} %>
 
-
 <div class="row">
   <div class="span6">
     <% unless @event.twitter_account.blank? %>
@@ -50,22 +49,11 @@
 </script>
 
 <% unless @event.twitter_account.blank? %>
-<script type="text/javascript">
-$('#twitter').jTweetsAnywhere({
-    username: '<%=h @event.twitter_account %>',
-    count: 6,
-    showTweetFeed: {
-        showTimestamp: {
-            refreshInterval: 15
-        },
-        autorefresh: {
-            mode: 'auto-insert',
-            interval: 60
-        },
-        paging: { mode: 'none' }
-    }
-});
-</script>
+
+
+<a class="twitter-timeline" href="https://twitter.com/<%=h @event.twitter_account %>" data-widget-id="529013524039622656">Tweets by <%=h @event.twitter_account %></a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
 <% end %>
 
 <% unless @event.flickr_group_id.blank? %>
