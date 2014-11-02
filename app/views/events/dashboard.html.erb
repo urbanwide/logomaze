@@ -4,7 +4,15 @@
   <div class="span6">
     <% unless @event.twitter_account.blank? %>
     <h2>&nbsp;&nbsp;&nbsp;Twitter: @otleyscience</h2>
-    <div id="twitter" style="width:300px"></div>
+
+      <% unless @event.twitter_account.blank? %>
+
+
+      <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/<%=h @event.twitter_account %>" data-widget-id="529013524039622656">Tweets by <%=h @event.twitter_account %></a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+      <% end %>
+
     <% end %>
   </div>
   <div class="span10">
@@ -27,6 +35,7 @@
   </div>
 </div>
 
+
 <script type="text/javascript">
         //<![CDATA[
         var robotcounter;
@@ -47,14 +56,6 @@
         setInterval("updateCounter('<%=h @event.token %>')", 5000);
 //]]>
 </script>
-
-<% unless @event.twitter_account.blank? %>
-
-
-<a class="twitter-timeline" href="https://twitter.com/<%=h @event.twitter_account %>" data-widget-id="529013524039622656">Tweets by <%=h @event.twitter_account %></a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-<% end %>
 
 <% unless @event.flickr_group_id.blank? %>
 <script type="text/javascript">
